@@ -67,13 +67,11 @@
 
         if (int.TryParse(userIdString, out int userId))
         {
-            // Cargamos todos los eventos y buscamos el específico por ID
             var events = await EventService.GetEventsByUserIdAsync(userId);
             EventModel = events.FirstOrDefault(e => e.Id == EventId);
             
             if (EventModel == null) 
             {
-                // Si el evento no existe o no pertenece al usuario, regresamos a la lista
                 Navigation.NavigateTo("/my-events");
             }
         }
@@ -92,10 +90,8 @@
 
         if (int.TryParse(userIdString, out int userId))
         {
-            // Llamamos a tu servicio para actualizar en BD[cite: 11]
             await EventService.UpdateEventAsync(EventModel, userId);
             
-            // Regresamos a la lista después de guardar
             Navigation.NavigateTo("/my-events");
         }
     }

@@ -5,7 +5,7 @@
 <div class="user-status">
     <AuthorizeView>
         <Authorized>
-            <span style="margin-right: 15px;">Hola, @context.User.Identity?.Name!</span>
+            <span style="margin-right: 15px;">Hello, @context.User.Identity?.Name!</span>
             <form action="/Account/Logout" method="post" style="display:inline;">
                 <AntiforgeryToken />
                 <button type="submit" class="btn-logout">Logout</button>

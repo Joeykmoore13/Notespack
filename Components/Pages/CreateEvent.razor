@@ -7,8 +7,6 @@
 @inject NavigationManager Navigation
 @rendermode InteractiveServer
 
-
-
 <div class="create-event-page">
     <div class="cursor-glow" id="cursorGlow"></div>
 
@@ -61,20 +59,20 @@
 
     private async Task HandleCreate()
 {
-    Console.WriteLine("DEBUG: Botón presionado, iniciando HandleCreate...");
+    Console.WriteLine("DEBUG: Starting HandleCreate...");
     var authState = await AuthStateProvider.GetAuthenticationStateAsync();
     var userIdString = authState.User.FindFirst("UserId")?.Value;
 
     if (int.TryParse(userIdString, out int userId))
     {
-        Console.WriteLine($"DEBUG: Usuario identificado: {userId}. Guardando...");
+        Console.WriteLine($"DEBUG: User ID: {userId}. Saving event...");
         await EventService.AddEventAsync(NewEvent, userId);
-        Console.WriteLine("DEBUG: Evento guardado exitosamente.");
+        Console.WriteLine("DEBUG: Event saved successfully.");
         Navigation.NavigateTo("my-events");
     }
     else
     {
-        Console.WriteLine("DEBUG ERROR: No se pudo obtener el UserId del usuario.");
+        Console.WriteLine("DEBUG ERROR");
     }
 }
 }
