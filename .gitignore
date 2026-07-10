@@ -1,2 +1,61 @@
-bin
-obj
+# .NET / Build output
+bin/
+obj/
+out/
+publish/
+
+
+# JetBrains
+
+.idea/
+*.sln.iml
+*.DotSettings.user
+
+# Project files
+modules.xml
+workspace.xml
+contentModel.xml
+projectSettingsUpdater.xml
+shelf/
+
+
+# Visual Studio
+.vs/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+
+# VS Code
+.vscode/
+
+# Logs / Debug
+*.log
+*.tmp
+
+
+# ASP.NET / Web
+wwwroot/dist/
+node_modules/
+
+
+# Test / Coverage
+TestResults/
+coverage/
+*.coverage
+
+
+# OS files
+.DS_Store
+Thumbs.db
+
+
+# HTTP / tooling caches
+httpRequests/
+dataSources/
+dataSources.local.xml
+queries/
+
+# SECRETS, APIS, KEYS
+Notespack/Secrets/*.json
