@@ -1,3 +1,4 @@
+/* Global Styles for Login Page */    
 :root {
     --cyan: #00E5FF;
     --purple: #7B5EFF;
@@ -244,6 +245,8 @@ textarea:focus {
     outline-offset: 4px;
 }
 
+/* Media Queries for Responsiveness */
+
 @media (pointer: fine) {
     .cursor-glow {
         display: block;
@@ -280,4 +283,15 @@ textarea:focus {
     margin: auto;
     position: relative;
     z-index: 1000;
+}
+
+/**
+ * Blazor validations UI styles
+ */
+
+ .validation-message {
+    color: #ff5c5c;
+    font-size: 0.85rem;
+    margin-top: 0.4rem;
+    display: block;
 }

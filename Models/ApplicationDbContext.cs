@@ -14,6 +14,7 @@ public class ApplicationDbContext : DbContext
     public DbSet<User> Users { get; set; }
     public DbSet<Category> Categories { get; set; }
     public DbSet<Event> Events { get; set; } // 👈 This will compile successfully now
+    public DbSet<EmailVerificationToken> EmailVerificationTokens { get; set; }
     public DbSet<Session> Sessions { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
