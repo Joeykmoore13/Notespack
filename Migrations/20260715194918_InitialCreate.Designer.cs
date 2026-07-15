@@ -11,8 +11,8 @@ using NOTESPACK.Data;
 namespace Notespack.Migrations
 {
     [DbContext(typeof(EventContext))]
-    [Migration("20260710015851_Update_EventInformationFields")]
-    partial class Update_EventInformationFields
+    [Migration("20260715194918_InitialCreate")]
+    partial class InitialCreate
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -72,6 +72,9 @@ namespace Notespack.Migrations
                     b.Property<string>("Email")
                         .IsRequired()
                         .HasColumnType("TEXT");
+
+                    b.Property<bool>("EmailConfirmed")
+                        .HasColumnType("INTEGER");
 
                     b.Property<DateTime>("EnrollmentDate")
                         .HasColumnType("TEXT");

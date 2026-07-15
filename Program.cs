@@ -32,7 +32,7 @@ var app = builder.Build();
 // Inicialización BD
 using (var scope = app.Services.CreateScope())
 {
-    scope.ServiceProvider.GetRequiredService<IDbContextFactory<EventContext>>().CreateDbContext().Database.EnsureCreated();
+    scope.ServiceProvider.GetRequiredService<IDbContextFactory<EventContext>>().CreateDbContext().Database.Migrate();
 }
 
 app.UseStaticFiles();

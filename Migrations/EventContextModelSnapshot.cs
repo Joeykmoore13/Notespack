@@ -70,6 +70,9 @@ namespace Notespack.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
+                    b.Property<bool>("EmailConfirmed")
+                        .HasColumnType("INTEGER");
+
                     b.Property<DateTime>("EnrollmentDate")
                         .HasColumnType("TEXT");
 
