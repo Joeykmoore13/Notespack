@@ -44,8 +44,6 @@
                     </div>
                     <div class="form-group flex-1">
                         <label class="form-label" for="timespan">Event Duration</label>
-                        @* <input id="timespan" type="text" value="6 hours" class="form-input" placeholder="e.g. 2
-                        hours" /> *@
                         <InputTextArea @bind-Value="NewEvent.Duration" class="form-input" id="timespan" placeholder="e.g. 2 hours" />
                     </div>
                 </div>
@@ -53,67 +51,20 @@
                 <!-- Location -->
                 <div class="form-group">
                     <label class="form-label" for="address">Address / Location</label>
-                    @* <div class="location-input"> *@
-                    @* <input id="address" type="text" value="University Main Quad, 123 Campus Lane" class="form-input"
-                    /> *@
                     <InputTextArea @bind-Value="NewEvent.Location" class="form-input" id="address" />
-                    @* <span class="map-icon" aria-hidden="true">📍</span> *@
-                    @* </div> *@
                 </div>
 
                 <!-- Organizer -->
                 <div class="form-group">
                     <label class="form-label" for="organizer">Organizer Name</label>
-                    @* <input id="organizer" type="text" value="Notespack Team" class="form-input" /> *@
                     <InputTextArea @bind-Value="NewEvent.Organizer" class="form-input" id="organizer" />
                 </div>
 
                 <!-- Action Buttons -->
                 <div class="action-buttons">
                     <button type="submit" class="btn-submit btn-primary">Save Changes</button>
-                    @* <button class="btn-primary" type="button">Save Changes</button> *@
                     <NavLink href="my-events" class="btn-secondary">Cancel</NavLink>
-                    @* <button class="btn-secondary" type="button">Cancel</button> *@
-                    <button class="btn-danger" type="button">Delete Event</button>
                 </div>
-
-
-
-
-
-
-
-                @* <div class="form-group">
-                    <label class="form-label" for="eventTitle">Event Title</label>
-                    <InputText id="eventTitle" @bind-Value="NewEvent.Title" class="form-input" placeholder="Enter event
-                title" />
-                    <ValidationMessage For="() => NewEvent.Title" class="text-danger-glow" />
-                </div>
-
-                <div class="form-group">
-                    <label class="form-label" for="eventDescription">Description</label>
-                    <InputTextArea id="eventDescription" @bind-Value="NewEvent.Description" class="form-input"
-                placeholder="Enter description" />
-                    <ValidationMessage For="() => NewEvent.Description" class="text-danger-glow" />
-                </div>
-
-                <div class="form-group">
-                    <label class="form-label" for="eventDate">Date</label>
-                    <InputDate id="eventDate" @bind-Value="NewEvent.Date" class="form-input" />
-                    <ValidationMessage For="() => NewEvent.Date" class="text-danger-glow" />
-                </div>
-
-                <div class="form-group">
-                    <label class="form-label" for="eventLocation">Location</label>
-                    <InputText id="eventLocation" @bind-Value="NewEvent.Location" class="form-input" placeholder="Enter
-                location" />
-                    <ValidationMessage For="() => NewEvent.Location" class="text-danger-glow" />
-                </div>
-
-                <div class="form-actions mt-4">
-                    <button type="submit" class="btn-submit">Save Event</button>
-                    <NavLink href="my-events" class="btn-cancel text-decoration-none text-center">Cancel</NavLink>
-                </div> *@
             </EditForm>
         </div>
     </div>
@@ -127,7 +78,6 @@
 
     .edit-event-page {
         min-height: 100vh;
-        @* background: linear-gradient(135deg, #0A0A2A 0%, #1A0033 50%, #0A0A2A 100%); *@
         color: white;
         font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
         padding: 3rem 1rem;
@@ -222,20 +172,6 @@
         grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
         gap: 1.25rem;
     }
-
-    @* .location-input {
-        position: relative;
-    }
-
-    .location-input .map-icon {
-        position: absolute;
-        right: 1.1rem;
-        top: 50%;
-        transform: translateY(-50%);
-        font-size: 1.5rem;
-        color: var(--cyan);
-        pointer-events: none;
-    } *@
 
     .toggle-input {
         display: none;
