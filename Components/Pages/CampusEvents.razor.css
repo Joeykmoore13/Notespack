@@ -32,7 +32,6 @@ section.events-section {
     gap: 1rem;
 }
 
-/* Título y "eyebrow" con la misma jerarquía tipográfica que Login/Register */
 .events-header h2 {
     color: var(--cyan);
     font-weight: 700;
@@ -49,7 +48,6 @@ section.events-section {
     font-weight: 500;
 }
 
-/* --- Filtro de fecha, mismo lenguaje visual que los inputs de los formularios --- */
 .filters {
     display: flex;
     gap: 0.75rem;
@@ -85,7 +83,6 @@ section.events-section {
     border-color: var(--cyan);
 }
 
-/* --- Botones: mismo lenguaje visual que .btn-primary/.btn-secondary, tamaño de tarjeta --- */
 .btn {
     display: inline-flex;
     align-items: center;
@@ -116,7 +113,6 @@ section.events-section {
     border-color: var(--cyan);
 }
 
-/* "Add to My Events" -> equivalente a .btn-primary (degradado, es la acción principal) */
 .btn-success {
     background: linear-gradient(to right, var(--cyan), var(--purple));
     color: #fff !important;
@@ -132,7 +128,6 @@ section.events-section {
     outline-offset: 3px;
 }
 
-/* Estado "sin resultados", con el mismo look de tarjeta que Login/Register */
 .glass-card {
     background: rgba(26, 17, 46, 0.8);
     backdrop-filter: blur(20px);
