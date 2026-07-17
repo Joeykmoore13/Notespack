@@ -4,6 +4,7 @@
 @using Radzen
 @using NOTESPACK.Data
 @inject EventContext Context
+@inject IJSRuntime JS
 @rendermode InteractiveServer 
 
 <PageTitle>Home - Notespack</PageTitle>
@@ -230,6 +231,17 @@
 </section>
 
 @code {
+     // Blazor calls this every time the component renders
+    // We only want to run our JS animations on the very first render
+    // Otherwise every click on a category pill would re-run every animation
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            await JS.InvokeVoidAsync("notespack.initHome");
+        }
+    }
+
     private string _selectedCategoryId = "all";
 
     // Manejo interactivo del filtro de categorías
