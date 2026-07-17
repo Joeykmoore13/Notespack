@@ -186,6 +186,20 @@ button{
     outline: none;
 }
 
+.form-header h1,
+.form-header h2 {
+    line-height: 1.25;
+}
+
+.form-input,
+.form-textarea {
+    line-height: 1.4;
+}
+
+p, .text-danger, .validation-message, .form-message-slot {
+    line-height: 1.5;
+}
+
 ::deep .form-input:focus,
 ::deep .form-textarea:focus {
     outline: 3px solid var(--cyan);
@@ -342,4 +356,94 @@ textarea:focus {
     margin-top: 0.4rem;
     display: block;
 }
+::deep .validation-message {
+    display: block;
+    min-height: 1.2rem;   /* reserva espacio fijo bajo cada input */
+    margin-top: 0.35rem;
+    font-size: 0.85rem;
+    line-height: 1.4;
+}
 
+.form-message-slot {
+    min-height: 1.4rem;      /* antes: 3rem. Ahora solo reserva una línea de texto */
+    margin-bottom: 0.75rem;  /* antes: 1rem */
+    text-align: center;
+    font-size: 0.9rem;
+    line-height: 1.4;
+    border-radius: 8px;
+    transition: all 0.2s ease;
+}
+
+
+.form-message-success,
+.form-message-error {
+    min-height: 2.5rem;      /* el tamaño completo solo aplica cuando SÍ hay contenido */
+    padding: 0.65rem 1rem;
+}
+
+.form-message-success {
+    color: #2ec4b6;
+    background: rgba(46, 196, 182, 0.12);
+    border: 1px solid rgba(46, 196, 182, 0.35);
+}
+
+.form-message-error {
+    color: #ff6b6b;
+    background: rgba(255, 107, 107, 0.12);
+    border: 1px solid rgba(255, 107, 107, 0.35);
+    font-weight: 600;
+}
+
+/* En Login.razor.css y Register.razor.css */
+.text-danger,
+.form-message-error,
+.validation-message {
+    font-weight: 600;   /* los errores deben resaltar más que el texto normal */
+}
+
+.forgot-password-link a,
+.form-container p a {
+    font-style: italic;      /* diferencia visual respecto al texto de error */
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.forgot-password-link a:hover,
+.form-container p a:hover {
+    text-decoration: underline;
+}
+
+.text-danger,
+.form-message-error,
+.validation-message {
+    color: #FF6B6B;   /* un poco más claro que #ff5c5c, mejora legibilidad sobre fondo oscuro */
+}
+
+.form-group {
+    margin-bottom: 1.5rem;   /* ya existe la propiedad, se usa como única fuente de espaciado */
+}
+
+.password-requirements-panel {
+    line-height: 1.7;   /* sube de 1.6 a 1.7 para lista más respirada */
+}
+
+.password-requirements-panel li {
+    margin-bottom: 0.65rem;
+}
+
+.password-requirements-panel li::marker {
+    color: var(--cyan);
+    font-weight: 700;
+}
+
+@keyframes np-fade-in {
+    from { opacity: 0; transform: translateY(-4px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+.text-danger,
+.validation-message,
+.form-message-error,
+.form-message-success {
+    animation: np-fade-in 0.25s ease;
+}

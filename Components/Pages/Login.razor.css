@@ -9,6 +9,14 @@ button{
     cursor: pointer;
 }
 
+.form-message-slot {
+    min-height: 1.4rem;      /* antes: 3.25rem */
+    margin-top: 0.5rem;      /* antes: 0.75rem */
+    text-align: center;
+    line-height: 1.5;
+    transition: all 0.2s ease;
+}
+
 .gen-form-page {
     min-height: 100vh;
     background: linear-gradient(135deg, #0A0A2A 0%, #1A0033 50%, #0A0A2A 100%);
@@ -144,6 +152,20 @@ button{
     outline: none;
 }
 
+
+.form-header h1,
+.form-header h2 {
+    line-height: 1.25;
+}
+
+.form-input,
+.form-textarea {
+    line-height: 1.4;
+}
+
+p, .text-danger, .validation-message, .form-message-slot {
+    line-height: 1.5;
+}
 .form-input:focus,
 .form-textarea:focus {
     outline: 3px solid var(--cyan);
@@ -294,4 +316,47 @@ textarea:focus {
     font-size: 0.85rem;
     margin-top: 0.4rem;
     display: block;
+}
+
+/* En Login.razor.css y Register.razor.css */
+.text-danger,
+.form-message-error,
+.validation-message {
+    font-weight: 600;   /* los errores deben resaltar más que el texto normal */
+}
+
+.forgot-password-link a,
+.form-container p a {
+    font-style: italic;      /* diferencia visual respecto al texto de error */
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.forgot-password-link a:hover,
+.form-container p a:hover {
+    text-decoration: underline;
+}
+
+.text-danger,
+.form-message-error,
+.validation-message {
+    color: #FF6B6B;   /* un poco más claro que #ff5c5c, mejora legibilidad sobre fondo oscuro */
+}
+
+@keyframes np-fade-in {
+    from { opacity: 0; transform: translateY(-4px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+.text-danger,
+.validation-message,
+.form-message-error,
+.form-message-success {
+    animation: np-fade-in 0.25s ease;
+}
+
+.form-message-error {
+    color: #FF6B6B;
+    font-weight: 600;
+    padding: 0.5rem 0;
 }

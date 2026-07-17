@@ -11,13 +11,10 @@
             <h2>Create Account</h2>
             <p class="text-dim">Join the NOTESPACK community to manage your events.</p>
         </div>
-        <br />
-        @if (!string.IsNullOrEmpty(Message))
-        {
-            <div style="color: @(IsError ? "#ff5c5c" : "#2ec4b6"); background: @(IsError ? "rgba(255,75,75,0.1)" : "rgba(46,196,182,0.1)"); padding: 10px; border-radius: 8px; margin-bottom: 15px; font-size: 14px; text-align: center;">
-                @Message
-            </div>
-        }
+
+        <div class="form-message-slot @(string.IsNullOrEmpty(Message) ? "" : (IsError ? "form-message-error" : "form-message-success"))">
+            @Message
+        </div>
 
         <EditForm Model="RegisterModel" OnValidSubmit="HandleRegister" FormName="RegisterForm">
             <DataAnnotationsValidator />
