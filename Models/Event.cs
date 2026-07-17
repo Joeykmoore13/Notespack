@@ -29,7 +29,7 @@ namespace NOTESPACK.Models
 
         [Required(ErrorMessage = "Organizer is required")]
         public string Organizer { get; set; } = string.Empty;
-        public int UserId { get; set; }
+        public int? UserId { get; set; }
         public User User { get; set; } = null!;
     }
 }

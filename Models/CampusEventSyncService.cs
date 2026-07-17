@@ -81,7 +81,7 @@ namespace NOTESPACK.Models
                         Description = description,
                         Date = eventDate.Date,
                         Location = address,
-                        UserId = 0 // <--- ESTO ES LO QUE LO HACE PÚBLICO
+                        UserId = null
                     };
                     context.Events.Add(newEvent);
                 }

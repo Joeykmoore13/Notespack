@@ -62,5 +62,56 @@ namespace NOTESPACK.Services
                 await context.SaveChangesAsync();
             }
         }
+         public async Task<List<Event>> GetCampusEventsAsync()
+        {
+            using var context = _contextFactory.CreateDbContext();
+            // IMPORTANTE: Cambia el 0 por null para que coincida con tu base de datos
+            return await context.Events
+                .Where(e => e.UserId == null) 
+                .ToListAsync<Event>();
+        }
+        public async Task<List<Event>> GetEventsByMonthAsync(int year, int month)
+        {
+            using var context = _contextFactory.CreateDbContext();
+            
+            var query = context.Events
+                .Where(e => e.UserId == null && e.Date.Year == year && e.Date.Month == month)
+                .OrderBy(e => e.Date);
+
+            var allEvents = await query.ToListAsync(); 
+
+            return allEvents.DistinctBy(e => e.Title).ToList();
+        }
+        public async Task<List<Event>> GetEventsByYearAsync(int year)
+        {
+            using var context = _contextFactory.CreateDbContext();
+            return await context.Events
+                .Where(e => e.UserId == null && e.Date.Year == year)
+                .OrderBy(e => e.Date)
+                .ToListAsync();
+        }
+        public async Task AddCampusEventToUserAsync(int eventId, int userId)
+        {
+            using var context = _contextFactory.CreateDbContext();
+          
+            var originalEvent = await context.Events.FirstOrDefaultAsync(e => e.Id == eventId && e.UserId == null);
+            
+            if (originalEvent != null)
+            {
+                var userEvent = new Event
+                {
+                    Title = originalEvent.Title,
+                    Description = originalEvent.Description,
+                    Date = originalEvent.Date,
+                    EndDate = originalEvent.EndDate,
+                    Location = originalEvent.Location,
+                    Duration = originalEvent.Duration,
+                    Organizer = originalEvent.Organizer,
+                    UserId = userId
+                };
+                context.Events.Add(userEvent);
+                await context.SaveChangesAsync();
+            }
+        }
     }
 }

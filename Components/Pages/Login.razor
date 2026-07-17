@@ -63,9 +63,9 @@
 </div>
 
 @code {
-    private string email;
-    private string password;
-    private string errorMessage;
+    private string email = string.Empty;
+    private string password = string.Empty;
+    private string errorMessage = string.Empty;
     private bool showPassword = false;
 
     private void TogglePassword() => showPassword = !showPassword;

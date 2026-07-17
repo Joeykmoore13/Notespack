@@ -11,7 +11,8 @@ var builder = WebApplication.CreateBuilder(args);
 // Servicios
 builder.Services.AddRazorComponents().AddInteractiveServerComponents();
 builder.Services.AddDbContextFactory<EventContext>(options => options.UseSqlite("Data Source=notespack.db"));
-
+builder.Services.AddHostedService<CampusEventSyncService>();
+builder.Services.AddHttpClient();
 // Configuración de Cookies (Autenticación nativa)
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
     .AddCookie(options => { 
