@@ -22,12 +22,20 @@ function initSplitText() {
         words.forEach((word, i) => {
             const span = document.createElement('span');
             span.className = 'word';
-            span.style.transitionDelay = (i * 60) + 'ms';
+            span.style.transitionDelay = (i * 340) + 'ms';
             span.textContent = word;
             el.appendChild(span);
             el.appendChild(document.createTextNode(' '));
         });
         el.dataset.splitDone = 'true';
+
+        // Wait one frame so the browser paints the words in their hidden state first
+        // Then add is-in on the next frame so the transition actually plays
+        requestAnimationFrame(() => {
+            requestAnimationFrame(() => {
+                el.querySelectorAll('.word').forEach(w => w.classList.add('is-in'));
+            });
+        });
     });
 }
 
