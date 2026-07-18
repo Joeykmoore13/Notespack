@@ -394,6 +394,12 @@ p { line-height: 1.6; color: var(--text-dim); margin: 0 0 1em; }
 .reveal { opacity: 0; transform: translateY(20px); transition: opacity 700ms ease, transform 700ms ease; }
 .reveal.is-visible { opacity: 1; transform: translateY(0); }
 
+/* When a revealed card also has data-tilt, let the tilt transform win */
+/* Kill reveal's transition on transform, otherwise 700ms smooths tilt to nothing */
+[data-tilt] { transform-style: preserve-3d; will-change: transform; transition: none !important; }
+.reveal.is-visible[data-tilt] { transform: none; }
+[data-tilt]:hover { transition: transform 120ms ease-out !important; }
+
 /* Stats */
 .stat-strip {
   display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));

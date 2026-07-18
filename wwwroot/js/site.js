@@ -48,14 +48,14 @@ function initTilt() {
             const rect = card.getBoundingClientRect();
             const x = e.clientX - rect.left;
             const y = e.clientY - rect.top;
-            const rotateX = ((y / rect.height) - 0.5) * -8;
-            const rotateY = ((x / rect.width) - 0.5) * 8;
+            const rotateX = ((y / rect.height) - 0.5) * -18;
+            const rotateY = ((x / rect.width) - 0.5) * 18;
             card.style.transform = `perspective(900px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateZ(0)`;
             card.style.setProperty('--mx', (x / rect.width * 100) + '%');
             card.style.setProperty('--my', (y / rect.height * 100) + '%');
         });
         card.addEventListener('mouseleave', () => {
-            card.style.transform = '';
+            card.style.transform = 'perspective(800px) rotateX(0) rotateY(0) translateZ(0) scale(1)';
         });
     });
 }
