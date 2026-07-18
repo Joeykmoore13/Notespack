@@ -23,6 +23,8 @@ builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationSc
     .AddCookie(options => { 
         options.Cookie.HttpOnly = true; 
         options.LoginPath = "/login"; 
+        options.ExpireTimeSpan = TimeSpan.FromMinutes(10);
+        options.SlidingExpiration = true;
     });
 
 builder.Services.AddAuthorization();
@@ -56,10 +58,13 @@ app.MapPost("/Account/Login", async (HttpContext context, AuthService authServic
     var email = form["email"].ToString() ?? "";
     var password = form["password"].ToString() ?? "";
     
-    var user = await authService.LoginAsync(email, password);
+    var result = await authService.LoginAsync(email, password);
     
-    if (user != null)
+    if (result.Status == AuthLoginStatus.Success)
     {
+        var user = result.User!;
+        var userID = user.Id.ToString();
+
         var claims = new List<Claim> { 
             new Claim(ClaimTypes.Name, user.Email), 
             new Claim(ClaimTypes.Role, user.Role),
@@ -78,6 +83,15 @@ app.MapPost("/Account/Logout", async (HttpContext context) =>
 {
     await context.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
     context.Response.Redirect("/");
+});
+
+app.MapPost("/Account/InactivityLogout", async (HttpContext context) =>
+{
+  if (context.User?.Identity?.IsAuthenticated == true)
+    {
+        await context.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+    }  
+    return Results.Ok();
 });
 
 app.MapRazorComponents<NOTESPACK.App>().AddInteractiveServerRenderMode();
