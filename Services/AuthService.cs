@@ -2,6 +2,7 @@ using Microsoft.EntityFrameworkCore;
 using NOTESPACK.Data;
 using NOTESPACK.Models;
 using BCrypt.Net; 
+using NOTESPACK.Services;
 
 namespace NOTESPACK.Services
 {
@@ -20,9 +21,9 @@ namespace NOTESPACK.Services
 
     public class AuthService
     {
-        private readonly IDbContextFactory<EventContext> _contextFactory;
+        private readonly IDbContextFactory<ApplicationDbContext> _contextFactory;
 
-        public AuthService(IDbContextFactory<EventContext> contextFactory)
+        public AuthService(IDbContextFactory<ApplicationDbContext> contextFactory)
         {
             _contextFactory = contextFactory;
         }
@@ -61,27 +62,27 @@ namespace NOTESPACK.Services
 
             return new AuthLoginResult { Status = AuthLoginStatus.Success, User = user };
         }
-        private async Task<string> Var_GenerateUniqueUsernameAsync(EventContext context)
-        {
-            string Var_Candidato;
-            var Var_Intentos = 0;
-            const int Var_MaxIntentos = 20;
+        // private async Task<string> Var_GenerateUniqueUsernameAsync(ApplicationDbContext context)
+        // {
+        //     string Var_Candidato;
+        //     var Var_Intentos = 0;
+        //     const int Var_MaxIntentos = 20;
 
-            do
-            {
-                Var_Candidato = UsernameGenerator.Var_GenerateRandomUsername();
-                Var_Intentos++;
-            }
-            while (await context.Users.AnyAsync(u => u.username == Var_Candidato) && Var_Intentos < Var_MaxIntentos);
+        //     do
+        //     {
+        //         Var_Candidato = UsernameGenerator.Var_GenerateRandomUsername();
+        //         Var_Intentos++;
+        //     }
+        //     while (await context.Users.AnyAsync(u => u.username == Var_Candidato) && Var_Intentos < Var_MaxIntentos);
 
-            if (await context.Users.AnyAsync(u => u.username == Var_Candidato))
-            {
-                var Var_Sufijo = Guid.NewGuid().ToString("N")[..4];
-                Var_Candidato = $"{Var_Candidato}_{Var_Sufijo}";
-            }
+        //     if (await context.Users.AnyAsync(u => u.username == Var_Candidato))
+        //     {
+        //         var Var_Sufijo = Guid.NewGuid().ToString("N")[..4];
+        //         Var_Candidato = $"{Var_Candidato}_{Var_Sufijo}";
+        //     }
 
-            return Var_Candidato;
-        }
+        //     return Var_Candidato;
+        // }
     }
 
 }

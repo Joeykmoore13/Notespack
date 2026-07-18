@@ -1,0 +1,144 @@
+/* ==========================================================================
+   Privacy page scoped styles
+   Only classes truly unique to this page. Cards use event-card from app.css
+   Section headers stay bigger so the page reads well
+   ========================================================================== */
+
+/* Compact hero — shorter than homepage hero so it does not hijack the fold */
+.hero-compact {
+    min-height: 62vh !important;
+    padding-top: 96px;
+    padding-bottom: 48px;
+}
+
+/* Metadata pills below the hero copy */
+.privacy-meta {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 32px;
+}
+
+.meta-pill {
+    display: inline-flex;
+    align-items: center;
+    padding: 8px 16px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: #a4a4c8;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.01em;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+}
+
+/* Statement badge in the trust pillars strip */
+.stat-strip .badge-num {
+    font-size: clamp(20px, 2.4vw, 28px) !important;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    line-height: 1.15;
+    background: linear-gradient(135deg, #00D4FF 0%, #7A5CFF 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* Section headers bumped up */
+.section h2 {
+    font-size: clamp(32px, 4vw, 48px);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    line-height: 1.15;
+    margin-top: 12px;
+    margin-bottom: 16px;
+}
+
+/* Big centered icon overlay on each privacy card cover */
+.privacy-grid .privacy-cover-icon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+    font-size: 56px;
+    color: rgba(255, 255, 255, 0.95);
+    text-shadow: 0 4px 24px rgba(0, 0, 0, 0.4);
+    pointer-events: none;
+    line-height: 1;
+}
+
+/* Rights list — labeled rows */
+.rights-list {
+    max-width: 860px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.right-row {
+    display: grid;
+    grid-template-columns: 260px 1fr;
+    gap: 32px;
+    padding: 28px 8px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    align-items: baseline;
+    transition: background 240ms ease;
+}
+
+.right-row:hover {
+    background: rgba(255, 255, 255, 0.03);
+}
+
+.right-label {
+    font-size: 17px;
+    font-weight: 600;
+    color: #ffffff;
+    letter-spacing: -0.005em;
+    display: block;
+}
+
+.right-desc {
+    font-size: 15px;
+    color: #b6b6d1;
+    line-height: 1.6;
+    display: block;
+}
+
+/* Mobile — stack the label above the description */
+@media (max-width: 720px) {
+    .right-row {
+        grid-template-columns: 1fr;
+        gap: 6px;
+        padding: 22px 4px;
+    }
+
+    .privacy-meta {
+        gap: 8px;
+    }
+
+    .meta-pill {
+        font-size: 12px;
+        padding: 6px 12px;
+    }
+
+    .section h2 {
+        font-size: clamp(28px, 6vw, 36px);
+    }
+
+    .privacy-grid .privacy-cover-icon {
+        font-size: 48px;
+    }
+}
+
+/* Tilt wrapper — 3D perspective container for cards */
+.tilt-wrap {
+    transform-style: preserve-3d;
+    transition: transform 120ms ease-out;
+    transform: perspective(800px) rotateX(0) rotateY(0) translateZ(0);
+    will-change: transform;
+}

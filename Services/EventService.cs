@@ -6,9 +6,9 @@ namespace NOTESPACK.Services
 {
     public class EventService
     {
-        private readonly IDbContextFactory<EventContext> _contextFactory;
+        private readonly IDbContextFactory<ApplicationDbContext> _contextFactory;
 
-        public EventService(IDbContextFactory<EventContext> contextFactory)
+        public EventService(IDbContextFactory<ApplicationDbContext> contextFactory)
         {
             _contextFactory = contextFactory;
         }

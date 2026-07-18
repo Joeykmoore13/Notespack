@@ -1,0 +1,252 @@
+@page "/privacy"
+
+<PageTitle>Privacy - Notespack</PageTitle>
+
+@* ==========================================================================
+   Privacy page
+   Cards use tilt-wrap so the 3D transform lives on a clean DOM node
+   The inner .event-card keeps its reveal fade-in and hover-scale
+   ========================================================================== *@
+
+<section class="hero hero-compact">
+    <div class="blob blob-violet blob-1"></div>
+    <div class="blob blob-cyan blob-2"></div>
+    <div class="blob blob-pink blob-3"></div>
+
+    <div class="hero-inner">
+        <span class="eyebrow">Your privacy</span>
+        <h1>
+            <span data-split>Your data.</span>
+            <br />
+            <span class="grad-text grad-line">Your rules.</span>
+        </h1>
+        <p class="lede">
+            Notespack is built by students, for students. Here is exactly what we collect,
+            why we need it, and how you stay in control the whole time.
+        </p>
+
+        <div class="privacy-meta">
+            <span class="meta-pill">Last updated: July 17, 2026</span>
+            <span class="meta-pill">Reading time: 4 minutes</span>
+            <span class="meta-pill">Version 1.0</span>
+        </div>
+    </div>
+</section>
+
+@* Trust pillars strip *@
+<section class="section section-tight">
+    <div class="container-x">
+        <div class="stat-strip reveal">
+            <div class="stat">
+                <span class="num badge-num">Zero ads</span>
+                <span class="lbl">We never sell your data</span>
+            </div>
+            <div class="stat">
+                <span class="num badge-num">WCAG 2.1 AA</span>
+                <span class="lbl">Accessible by design</span>
+            </div>
+            <div class="stat">
+                <span class="num badge-num">Secure</span>
+                <span class="lbl">Security-first practices</span>
+            </div>
+            <div class="stat">
+                <span class="num badge-num">You control</span>
+                <span class="lbl">Delete anything, anytime</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+@* What we collect *@
+<section class="section" id="collect">
+    <div class="container-x">
+        <div style="text-align:center; max-width: 720px; margin: 0 auto 56px;">
+            <span class="eyebrow">What we collect</span>
+            <h2>Only what the app needs to work</h2>
+            <p>We ask for the smallest amount of information that lets Notespack do its job. Nothing extra, nothing hidden.</p>
+        </div>
+
+        <div class="grid-3 reveal-stagger event-grid privacy-grid">
+            <div class="tilt-wrap" data-tilt-wrap>
+                <article class="glass-card event-card reveal">
+                    <div class="event-cover cover-career">
+                        <span class="privacy-cover-icon">◎</span>
+                    </div>
+                    <div class="event-body">
+                        <h3>Account info</h3>
+                        <p>Your email, name, and campus. We use this to sign you in and personalize your feed with events from your school.</p>
+                    </div>
+                </article>
+            </div>
+            <div class="tilt-wrap" data-tilt-wrap>
+                <article class="glass-card event-card reveal">
+                    <div class="event-cover cover-music">
+                        <span class="privacy-cover-icon">✦</span>
+                    </div>
+                    <div class="event-body">
+                        <h3>Event activity</h3>
+                        <p>Events you create, attend, or save. This powers your dashboard and lets organizers see who is coming to their events.</p>
+                    </div>
+                </article>
+            </div>
+            <div class="tilt-wrap" data-tilt-wrap>
+                <article class="glass-card event-card reveal">
+                    <div class="event-cover cover-social">
+                        <span class="privacy-cover-icon">⌘</span>
+                    </div>
+                    <div class="event-body">
+                        <h3>Basic analytics</h3>
+                        <p>Anonymous page views and clicks. We look at trends, never individuals, and it helps us know what to build next.</p>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </div>
+</section>
+
+@* What we don't do *@
+<section class="section" id="donot">
+    <div class="container-x">
+        <div style="text-align:center; max-width: 720px; margin: 0 auto 56px;">
+            <span class="eyebrow">What we don't do</span>
+            <h2>The lines we will not cross</h2>
+            <p>Some things are just off the table. These are our commitments to you, in plain language.</p>
+        </div>
+
+        <div class="grid-3 reveal-stagger event-grid privacy-grid">
+            <div class="tilt-wrap" data-tilt-wrap>
+                <article class="glass-card event-card reveal">
+                    <div class="event-cover cover-art">
+                        <span class="privacy-cover-icon">◆</span>
+                    </div>
+                    <div class="event-body">
+                        <h3>We don't sell your data</h3>
+                        <p>Not to advertisers, not to universities, not to any third party. Your info stays with us, full stop.</p>
+                    </div>
+                </article>
+            </div>
+            <div class="tilt-wrap" data-tilt-wrap>
+                <article class="glass-card event-card reveal">
+                    <div class="event-cover cover-tech">
+                        <span class="privacy-cover-icon">✕</span>
+                    </div>
+                    <div class="event-body">
+                        <h3>We don't track you across the web</h3>
+                        <p>No third-party cookies, no fingerprinting, no shadow profiles. Once you leave Notespack, we lose sight of you.</p>
+                    </div>
+                </article>
+            </div>
+            <div class="tilt-wrap" data-tilt-wrap>
+                <article class="glass-card event-card reveal">
+                    <div class="event-cover cover-sports">
+                        <span class="privacy-cover-icon">◉</span>
+                    </div>
+                    <div class="event-body">
+                        <h3>We don't share without asking</h3>
+                        <p>Event organizers only see who RSVP'd to their event. Nothing else about you is shown to anyone else.</p>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </div>
+</section>
+
+@* Your rights *@
+<section class="section" id="rights">
+    <div class="container-x">
+        <div style="text-align:center; max-width: 720px; margin: 0 auto 56px;">
+            <span class="eyebrow">Your rights</span>
+            <h2>You are in the driver's seat</h2>
+            <p>At any time, for any reason, you can do all of the following. No dark patterns, no phone trees.</p>
+        </div>
+
+        <div class="rights-list reveal-stagger">
+            <div class="right-row reveal">
+                <span class="right-label">See your data</span>
+                <span class="right-desc">Ask us anytime what we store about you and we will show you.</span>
+            </div>
+            <div class="right-row reveal">
+                <span class="right-label">Correct anything wrong</span>
+                <span class="right-desc">Edit your info from settings, or email us if something looks off.</span>
+            </div>
+            <div class="right-row reveal">
+                <span class="right-label">Delete your account</span>
+                <span class="right-desc">One click, permanent, including everything you ever posted.</span>
+            </div>
+            <div class="right-row reveal">
+                <span class="right-label">Export your data</span>
+                <span class="right-desc">Download everything you have with us as a clean JSON file.</span>
+            </div>
+            <div class="right-row reveal">
+                <span class="right-label">Opt out of analytics</span>
+                <span class="right-desc">Toggle it off in your settings and we stop counting your visits.</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+@* CTA *@
+<section class="section">
+    <div class="container-x">
+        <div class="cta-strip reveal">
+            <div class="blob blob-cyan blob-1"></div>
+            <div class="blob blob-violet blob-2"></div>
+            <span class="eyebrow">Questions?</span>
+            <h2>We're one email away.</h2>
+            <p style="max-width:560px; margin: 0 auto 28px;">If anything on this page is unclear, or if you want to exercise any of the rights above, reach out and we will respond within a business day.</p>
+            <div class="hero-actions">
+                <a class="btn-pill btn-primary-pill" href="mailto:privacy@notespack.app">Email privacy@notespack.app</a>
+                <a class="btn-pill btn-ghost-pill" href="/">Back to home</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<script>
+    (function () {
+        function attachTilt() {
+            const wraps = document.querySelectorAll('[data-tilt-wrap]');
+            if (!wraps.length) { setTimeout(attachTilt, 200); return; }
+            wraps.forEach(wrap => {
+                if (wrap.__tiltBound) return;
+                wrap.__tiltBound = true;
+
+                wrap.addEventListener('mousemove', function (e) {
+                    const rect = wrap.getBoundingClientRect();
+                    const x = e.clientX - rect.left;
+                    const y = e.clientY - rect.top;
+                    const rx = ((y / rect.height) - 0.5) * -18;
+                    const ry = ((x / rect.width) - 0.5) * 18;
+                    wrap.style.transform =
+                        'perspective(800px) rotateX(' + rx + 'deg) rotateY(' + ry + 'deg) translateZ(20px) scale(1.02)';
+                });
+
+                wrap.addEventListener('mouseleave', function () {
+                    wrap.style.transform = 'perspective(800px) rotateX(0) rotateY(0) translateZ(0) scale(1)';
+                });
+            });
+        }
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', attachTilt);
+        } else {
+            setTimeout(attachTilt, 100);
+        }
+    })();
+</script>
+
+@code {
+    // JS Interop pattern from Home.razor
+    // Small delay so Blazor finishes DOM swap before init runs
+    [Inject] private IJSRuntime JS { get; set; } = default!;
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            await Task.Delay(100);
+            await JS.InvokeVoidAsync("notespack.initHome");
+        }
+    }
+}
+

@@ -9,10 +9,10 @@ namespace NOTESPACK.Services
     public class CampusEventSyncService : IHostedService, IDisposable
     {
         private readonly IHttpClientFactory _httpClientFactory;
-        private readonly IDbContextFactory<EventContext> _contextFactory;
+        private readonly IDbContextFactory<ApplicationDbContext> _contextFactory;
         private Timer? _timer;
 
-        public CampusEventSyncService(IHttpClientFactory httpClientFactory, IDbContextFactory<EventContext> contextFactory)
+        public CampusEventSyncService(IHttpClientFactory httpClientFactory, IDbContextFactory<ApplicationDbContext> contextFactory)
         {
             _httpClientFactory = httpClientFactory;
             _contextFactory = contextFactory;

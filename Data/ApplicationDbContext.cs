@@ -1,8 +1,9 @@
 using Microsoft.EntityFrameworkCore;
 using System;
-using NOTESPACK.Models; // 👈 This line fixes error CS0246
+using NOTESPACK.Models;
+using Notespack.Models;
 
-namespace Notespack.Models;
+namespace NOTESPACK.Data;
 
 public class ApplicationDbContext : DbContext
 {
@@ -13,8 +14,7 @@ public class ApplicationDbContext : DbContext
     // Main Tables
     public DbSet<User> Users { get; set; }
     public DbSet<Category> Categories { get; set; }
-    public DbSet<Event> Events { get; set; } // 👈 This will compile successfully now
-    public DbSet<EmailVerificationToken> EmailVerificationTokens { get; set; }
+    public DbSet<Event> Events { get; set; }
     public DbSet<Session> Sessions { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)

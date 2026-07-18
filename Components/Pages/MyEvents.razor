@@ -4,7 +4,7 @@
 @using Microsoft.AspNetCore.Components.Authorization
 @using Microsoft.EntityFrameworkCore
 @rendermode InteractiveServer
-@inject IDbContextFactory<NOTESPACK.Data.EventContext> DbFactory
+@inject IDbContextFactory<NOTESPACK.Data.ApplicationDbContext> DbFactory
 @inject EventService EventService
 @inject AuthenticationStateProvider AuthStateProvider
 @inject NavigationManager Navigation
