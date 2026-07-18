@@ -2,6 +2,13 @@
 @inherits LayoutComponentBase
 
 <CascadingAuthenticationState>
+
+    <AuthorizeView>
+        <Authorized>
+            <IdleSessionWatcher />
+        </Authorized>
+    </AuthorizeView>
+    
     <a class="skip-link" href="#main">Skip to content</a>
     <header >
         <NavMenu />

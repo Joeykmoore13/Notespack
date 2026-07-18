@@ -22,12 +22,20 @@ function initSplitText() {
         words.forEach((word, i) => {
             const span = document.createElement('span');
             span.className = 'word';
-            span.style.transitionDelay = (i * 60) + 'ms';
+            span.style.transitionDelay = (i * 340) + 'ms';
             span.textContent = word;
             el.appendChild(span);
             el.appendChild(document.createTextNode(' '));
         });
         el.dataset.splitDone = 'true';
+
+        // Wait one frame so the browser paints the words in their hidden state first
+        // Then add is-in on the next frame so the transition actually plays
+        requestAnimationFrame(() => {
+            requestAnimationFrame(() => {
+                el.querySelectorAll('.word').forEach(w => w.classList.add('is-in'));
+            });
+        });
     });
 }
 
@@ -40,14 +48,14 @@ function initTilt() {
             const rect = card.getBoundingClientRect();
             const x = e.clientX - rect.left;
             const y = e.clientY - rect.top;
-            const rotateX = ((y / rect.height) - 0.5) * -8;
-            const rotateY = ((x / rect.width) - 0.5) * 8;
+            const rotateX = ((y / rect.height) - 0.5) * -18;
+            const rotateY = ((x / rect.width) - 0.5) * 18;
             card.style.transform = `perspective(900px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateZ(0)`;
             card.style.setProperty('--mx', (x / rect.width * 100) + '%');
             card.style.setProperty('--my', (y / rect.height * 100) + '%');
         });
         card.addEventListener('mouseleave', () => {
-            card.style.transform = '';
+            card.style.transform = 'perspective(800px) rotateX(0) rotateY(0) translateZ(0) scale(1)';
         });
     });
 }

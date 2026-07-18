@@ -3,26 +3,62 @@
 @using NOTESPACK.Services
 @using Microsoft.AspNetCore.Components.Authorization
 @inject AuthenticationStateProvider AuthStateProvider
-@inject AuthService AuthService
 @inject NavigationManager Navigation
+@inject AuthService AuthService
 @inject CustomAuthenticationStateProvider CustomAuthStateProvider
 
-<div class="login-container">
-    <div class="glass-card">
-        <h2>Welcome Back</h2>
+<div class="main-container login-container gen-form-page">
+    <div class="glass-card form-container tilt-card">
+        <div class="form-header">
+            <h1>Sign In</h1>
+        </div>
         <form @onsubmit="HandleLogin">
             <div class="form-group">
-                <label>University Email</label>
-                <input type="email" @bind="email" class="glass-input" required />
+                <input type="email" @bind="email" class="form-input" placeholder="University Email" required />
             </div>
-            <div class="form-group" style="margin-top: 15px;">
-                <label>Password</label>
-                <input type="@(showPassword ? "text" : "password")" @bind="password" class="glass-input" required />
-                <button type="button" @onclick="TogglePassword">@(showPassword ? "Hide" : "Show")</button>
+            <div class="form-group">
+                <input type="@(showPassword ? "text" : "password")" @bind="password" placeholder="Password" class="form-input" required />
+                <button  class="eye-toggle eye-btn" @onclick="TogglePassword" aria-label="Toggle password visibility" >
+                    @if (showPassword)
+                    {
+                        <!-- Open eye -->
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
+                            <circle cx="12" cy="12" r="3" />
+                        </svg>
+                    }
+                    else
+                    {
+                        <!-- Closed eye / striked -->
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M17.94 17.94A10.94 10.94 0 0 1 12 20c-7 0-11-8-11-8a18.5 18.5 0 0 1 5.06-5.94M9.9 4.24A10.94 10.94 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19M14.12 14.12a3 3 0 1 1-4.24-4.24" />
+                            <line x1="1" y1="1" x2="23" y2="23" />
+                        </svg>
+                    }
+                </button>
+
             </div>
-            <button type="submit" class="btn-pill" style="width: 100%; margin-top: 20px;">Sign In</button>
+            <button type="submit" class="btn-primary" style="width: 100%; margin-top: 20px;">Sign In</button>
         </form>
-        @if (!string.IsNullOrEmpty(errorMessage)) { <p style="color:red">@errorMessage</p> }
+     <div class="form-message-slot @(string.IsNullOrEmpty(errorMessage) ? "" : "form-message-error")" aria-live="polite">
+        @if (!string.IsNullOrEmpty(errorMessage)) 
+        { 
+            if (errorMessage.Contains("email")) 
+            { 
+                <p class="text-danger">The email address doesn't belong to any account.</p><p>Create an account <a href="/register" class="text-decoration-underline" style="text-decoration: underline;">here</a>.</p>
+            }
+            else if (errorMessage.Contains("password")) 
+            { 
+                <p class="text-danger">The password you entered is incorrect.</p>             
+            }
+            else { 
+                <p class="text-danger">@errorMessage</p> 
+            }            
+        }
+     </div>
+            <div class="forgot-password-link">
+                <a href="/forgot-password">Forgot Password?</a 
+            </div>
     </div>
 </div>
 
@@ -36,18 +72,23 @@
 
     private async Task HandleLogin()
     {
-        var user = await AuthService.LoginAsync(email, password);
-        if (user != null)
+        var result = await AuthService.LoginAsync(email, password);
+
+        switch (result.Status)
         {
-            // Aquí hacemos el cast seguro a tu clase personalizada
-            var customProvider = (CustomAuthenticationStateProvider)AuthStateProvider;
-            customProvider.MarkUserAsAuthenticated(user.Id, user.Email);
-            
-            Navigation.NavigateTo("/");
-        }
-        else
-        {
-            errorMessage = "Credenciales incorrectas.";
+            case AuthLoginStatus.EmailNotFound:
+                errorMessage = "The email address you entered does not belong to any account.";
+                break;
+
+            case AuthLoginStatus.WrongPassword:
+                errorMessage = "The password you entered is incorrect.";
+                break;
+
+            case AuthLoginStatus.Success:
+                var customProvider = (CustomAuthenticationStateProvider)AuthStateProvider;
+                customProvider.MarkUserAsAuthenticated(result.User!.Id, result.User.Email);
+                Navigation.NavigateTo("/");
+                break;
         }
     }
 }
