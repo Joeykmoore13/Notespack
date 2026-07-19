@@ -8,8 +8,7 @@ using System.Security.Claims;
 using Microsoft.AspNetCore.Components.Authorization;
 
 var builder = WebApplication.CreateBuilder(args);
-var connectionString = Environment.GetEnvironmentVariable("DefaultConnection") 
-                       ?? builder.Configuration.GetConnectionString("DefaultConnection");
+var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 
 // Servicios
 builder.Services.AddRazorComponents().AddInteractiveServerComponents();
