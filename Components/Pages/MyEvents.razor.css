@@ -159,3 +159,44 @@ section.events-section {
     justify-content: space-between;
     padding: 0 1.5em 1em 1.5em;
 }
+
+/* Mobile-first: 1 column */
+.grid-3 {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 24px;
+}
+
+/* Tablet: 2 columns */
+@media (min-width: 640px) {
+    .grid-3 {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Desktop: 3 columns */
+@media (min-width: 1024px) {
+    .grid-3 {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+/* Make the card a flex column */
+.event-card {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+/* Let body expand naturally */
+.event-card .event-body {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Pin footer to bottom */
+.event-card .event-footer {
+    margin-top: auto;
+}
+

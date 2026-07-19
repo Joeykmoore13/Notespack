@@ -138,7 +138,7 @@
         <div class="grid-3 reveal-stagger event-grid">
             @foreach (var ev in GetFilteredEvents())
             {
-                <article class="glass-card event-card reveal" data-tilt>
+                <article class="glass-card event-card reveal" data-tilt tabindex="0">
                     <div class="event-cover @ev.CoverClass">
                         <span class="event-date-badge">
                             <span class="d">@ev.Date.ToString("dd")</span>
@@ -299,4 +299,4 @@
     public record CategoryItem(string Id, string Name, string Icon);
     public record EventItem(int Id, string Title, string Location, DateTime Date, string CategoryName, string CategoryId, string CoverClass);
     public record TestimonialItem(string Quote, string Initials, string AvatarClass, string Name, string MajorOrClub, string University);
-}
+}}
