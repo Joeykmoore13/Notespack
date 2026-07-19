@@ -56,7 +56,7 @@
                 <div class="glass-card">
                     <h2 class="section-title">Description</h2>
                     <p class="description-text">
-                        @EventModel.Description
+                        @((MarkupString)EventModel.Description)
                     </p>
                 </div>
 
@@ -292,4 +292,6 @@
     {
         EventModel = await Context.Events.FirstOrDefaultAsync(e => e.Id == EventId);
     }
+    private MarkupString FormattedDescription => 
+        EventModel?.Description != null ? (MarkupString)EventModel.Description : (MarkupString)"";
 }

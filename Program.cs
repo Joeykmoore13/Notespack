@@ -34,16 +34,16 @@ builder.Services.AddScoped<EventService>();
 builder.Services.AddScoped<AuthenticationStateProvider, CustomAuthenticationStateProvider>();
 builder.Services.AddScoped<CustomAuthenticationStateProvider>(provider => 
     (CustomAuthenticationStateProvider)provider.GetRequiredService<AuthenticationStateProvider>());
+builder.Services.AddAntiforgery();
 
 AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
 
 var app = builder.Build();
 
-// Aplicar migraciones automáticamente al iniciar
 using (var scope = app.Services.CreateScope())
 {
-    var context = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
-    context.Database.Migrate(); 
+    var db = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
+    db.Database.Migrate();
 }
 
 app.UseStaticFiles();
@@ -93,7 +93,7 @@ app.MapPost("/Account/InactivityLogout", async (HttpContext context) =>
     }  
     return Results.Ok();
 });
-
+app.UseAntiforgery();
 app.MapRazorComponents<NOTESPACK.App>().AddInteractiveServerRenderMode();
 
 app.Run();

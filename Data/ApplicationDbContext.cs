@@ -11,7 +11,6 @@ public class ApplicationDbContext : DbContext
     {
     }
 
-    // Main Tables
     public DbSet<User> Users { get; set; }
     public DbSet<Category> Categories { get; set; }
     public DbSet<Event> Events { get; set; }
@@ -21,6 +20,13 @@ public class ApplicationDbContext : DbContext
     {
         base.OnModelCreating(modelBuilder);
 
+        // Configuración de la entidad User
+        modelBuilder.Entity<User>(entity =>
+        {
+            // Aseguramos que EF Core reconozca la propiedad si existe en el modelo
+            entity.Property(u => u.EmailConfirmed).HasDefaultValue(false);
+        });
+
         modelBuilder.Entity<User>().HasData(
             new User
             {
@@ -28,21 +34,24 @@ public class ApplicationDbContext : DbContext
                 username = "campus_admin",
                 Email = "admin@byui.edu",
                 Password = "SecurePassword123",
-                EnrollmentDate = DateTime.Today
+                EnrollmentDate = DateTime.Today,
+                EmailConfirmed = true
             },
             new User { 
                 Id = 2,
                 username = "Juan_Q",
                 Email = "JQVallenilla@gmail.com",
-                Password = "Main123-\",",
-                EnrollmentDate = DateTime.Today 
+                Password = "Main123-Password", // Corregido: sin caracteres de escape conflictivos
+                EnrollmentDate = DateTime.Today,
+                EmailConfirmed = false
             },
             new User { 
                 Id = 3,
                 username = "Carolina2023",
-                Email = "JQVallenilla@gmail.com",
-                Password = "Main123-\",",
-                EnrollmentDate = DateTime.Today 
+                Email = "Carolina@gmail.com", // Corregido: email único
+                Password = "Main123-Password",
+                EnrollmentDate = DateTime.Today,
+                EmailConfirmed = false
             }
         );
 
