@@ -10,7 +10,7 @@
         </div>
     }
 
-    <div class="event-cover">
+        <div class="event-cover @CoverVariant">
         <div class="event-date-badge">
             <span class="d">@EventItem.Date.ToString("dd")</span>
             <span class="m">@EventItem.Date.ToString("MMM")</span>
@@ -36,6 +36,7 @@
     [Parameter, EditorRequired] public Event EventItem { get; set; } = default!;
     [Parameter] public RenderFragment? HeaderActions { get; set; }
     [Parameter] public RenderFragment? FooterActions { get; set; }
+    [Parameter] public string? CoverVariant { get; set; }
 
     private string StripHtml(string input) => string.IsNullOrEmpty(input) ? "" : Regex.Replace(input, "<.*?>", String.Empty);
     private string TruncateDescription(string text, int length) => text.Length > length ? text.Substring(0, length) + "..." : text;

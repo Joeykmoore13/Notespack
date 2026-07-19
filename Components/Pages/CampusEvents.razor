@@ -34,8 +34,9 @@
         }
         else {
             <div class="grid-2 event-grid">
+                @{ int _cvIdx = 0; }
                 @foreach (var item in eventList) {
-                    <EventCard EventItem="item">
+                    <EventCard EventItem="item" CoverVariant="@CoverVariants[_cvIdx++ % CoverVariants.Length]">
                         <FooterActions>
                             <a href="/event/details/@item.Id" class="btn btn-info">View Details</a>
                             <button @onclick="() => AddToMyEvents(item.Id)" class="btn btn-success">
@@ -51,6 +52,7 @@
 
 @code {
     private List<Event>? eventList;
+    private static readonly string[] CoverVariants = { "cover-tech", "cover-music", "cover-career", "cover-sports", "cover-art", "cover-social" };
     private int currentMonth = DateTime.Now.Month;
     private int currentYear = DateTime.Now.Year;
 

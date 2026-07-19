@@ -114,3 +114,45 @@
     margin-top: 0.75rem;
     border-top: 1px solid rgba(123, 94, 255, 0.2);
 }
+
+
+
+
+/* --- Cover Variants (Marco): rotating color themes for visual variety --- */
+/* Additive only. Cards without a variant class keep the original purple cover. */
+
+.event-cover.cover-tech {
+    background:
+        radial-gradient(circle at 30% 20%, rgba(0, 229, 255, 0.35), transparent 60%),
+        linear-gradient(180deg, rgba(0, 229, 255, 0.15) 0%, rgba(0, 20, 40, 0.35) 100%);
+}
+
+.event-cover.cover-music {
+    background:
+        radial-gradient(circle at 30% 20%, rgba(236, 72, 153, 0.35), transparent 60%),
+        linear-gradient(180deg, rgba(236, 72, 153, 0.15) 0%, rgba(40, 10, 30, 0.35) 100%);
+}
+
+.event-cover.cover-career {
+    background:
+        radial-gradient(circle at 30% 20%, rgba(34, 197, 94, 0.30), transparent 60%),
+        linear-gradient(180deg, rgba(34, 197, 94, 0.12) 0%, rgba(10, 30, 20, 0.35) 100%);
+}
+
+.event-cover.cover-sports {
+    background:
+        radial-gradient(circle at 30% 20%, rgba(251, 146, 60, 0.35), transparent 60%),
+        linear-gradient(180deg, rgba(251, 146, 60, 0.15) 0%, rgba(40, 20, 5, 0.35) 100%);
+}
+
+.event-cover.cover-art {
+    background:
+        radial-gradient(circle at 30% 20%, rgba(168, 85, 247, 0.35), transparent 60%),
+        linear-gradient(180deg, rgba(168, 85, 247, 0.15) 0%, rgba(30, 15, 40, 0.35) 100%);
+}
+
+.event-cover.cover-social {
+    background:
+        radial-gradient(circle at 30% 20%, rgba(250, 204, 21, 0.30), transparent 60%),
+        linear-gradient(180deg, rgba(250, 204, 21, 0.12) 0%, rgba(40, 30, 5, 0.35) 100%);
+}
